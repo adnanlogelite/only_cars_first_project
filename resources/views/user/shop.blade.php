@@ -2,7 +2,7 @@
 @section('title', 'Shop')
 @section('page_header')
 <div class="col-lg-12">
-    <div class="container-fluid bg-image mb-5" style="background-image: url('images/allcar.png');">
+    <div class="container-fluid bg-image mb-5" style="background-image: url('images/banner.png');">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">All Cars</h1>
             <div class="d-inline-flex">
@@ -73,14 +73,14 @@
             <div class="row pb-3">
                 <div class="col-12 pb-1">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="searchbar" placeholder="Search by name">
-                                <div class="input-group-append">
-                                    <span class="input-group-text bg-transparent text-primary">
-                                        <i class="fa fa-search"></i>
-                                    </span>
-                                </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="searchbar" placeholder="Search by name">
+                            <div class="input-group-append">
+                                <span class="input-group-text bg-transparent text-primary">
+                                    <i class="fa fa-search"></i>
+                                </span>
                             </div>
+                        </div>
                         <div class="dropdown ml-4">
                             <button class="btn border dropdown-toggle allbrand" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Brands</button>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
@@ -94,6 +94,27 @@
                 <!-- Loop -->
                 <div class="row col-12" id="fprice">
                     <!-- append product  -->
+                    @if(!empty($brands))
+                    @foreach($brands as $brand)
+                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                        <div class="card product-item border-0 mb-4">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="{{asset('/images')}}/{{$brand->image}}" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3">({{$brand->brand_name}}) {{$brand->car_name}}</h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>₹ {{$brand->price}}</h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="product-detail/{{$brand->id}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="/enquire-now/{{$brand->id}}" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    @endif
                 </div>
                 <!-- Loop End  -->
             </div>
@@ -105,8 +126,7 @@
                         </li>
                         <input type="hidden" value="{{$total_page}}" id="max_page">
                         <!-- <span aria-hidden="true">&laquo;</span> -->
-                        @for($i = 1; $i <= $total_page; $i++)
-                        <li class="page-item"><a class="page-link" href="javascript:void(0)">{{$i}}</a></li>
+                        @for($i = 1; $i <= $total_page; $i++) <li class="page-item"><a class="page-link" href="javascript:void(0)">{{$i}}</a></li>
                             @endfor
                             <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li> -->
@@ -124,7 +144,11 @@
 </div>
 <script>
     $(document).ready(function() {
-        get_data();
+        var pathname = $(location).attr('pathname');
+        // $('.allbrand').text(name);
+        if(pathname == '/shop'){
+            get_data();
+        }
         $('.prev').hide();
 
         // fetch data from DB start
@@ -149,7 +173,7 @@
                                 </div>\
                                 <div class="card-footer d-flex justify-content-between bg-light border">\
                                     <a href="product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
-                                    <a href="/enquire-now/'+value['id']+'" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
+                                    <a href="/enquire-now/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
                                 </div>\
                             </div>\
                         </div>');
@@ -165,6 +189,7 @@
             var val = $(this).val();
 
             // for reset other filters start
+            $("#searchbar").val('');
             $('.allbrand').text('All Brands');
             $('#year_all').prop('checked', true);
             $('#year_1').prop('checked', false);
@@ -198,7 +223,7 @@
                                 </div>\
                                 <div class="card-footer d-flex justify-content-between bg-light border">\
                                     <a href="product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
-                                    <a href="/enquire-now/'+value['id']+'" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
+                                    <a href="/enquire-now/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
                                 </div>\
                             </div>\
                         </div>');
@@ -227,6 +252,7 @@
         $(document).on('change', '#checks', function() {
 
             // for reset other filters start
+            $("#searchbar").val('');
             $('#price_filter option[value="0"]').prop('selected', true);
             $('.allbrand').text('All Brands');
             // for reset other filters end
@@ -261,7 +287,7 @@
                                 </div>\
                                 <div class="card-footer d-flex justify-content-between bg-light border">\
                                     <a href="product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
-                                    <a href="/enquire-now/'+value['id']+'" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
+                                    <a href="/enquire-now/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
                                 </div>\
                             </div>\
                         </div>');
@@ -277,34 +303,34 @@
             $('.prev').show();
             var page = $(this).text();
             var max = $('#max_page').val();
-            if(page == 1){
+            if (page == 1) {
                 $('.prev').hide();
             }
-            if(page == max){
+            if (page == max) {
                 $('.next').hide();
-            }else{
+            } else {
                 $('.next').show();
             }
             console.log(page);
-                $('.page-item').each(function() {
-                    $(this).removeClass('active');
-                });
-                $(this).parent('.page-item').addClass('active');
-                $.ajax({
-                    type: "GET",
-                    url: "{{url('price-filter')}}",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: {
-                        page: page,
-                    },
-                    success: function(res) {
-                        console.log(res);
-                        let img = "{{url('/images')}}";
-                        $('#fprice').empty();
-                        $.each(res, function(key, value) {
-                            $('#fprice').append('<div class="col-lg-4 col-md-6 col-sm-12 pb-1" >\
+            $('.page-item').each(function() {
+                $(this).removeClass('active');
+            });
+            $(this).parent('.page-item').addClass('active');
+            $.ajax({
+                type: "GET",
+                url: "{{url('price-filter')}}",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    page: page,
+                },
+                success: function(res) {
+                    console.log(res);
+                    let img = "{{url('/images')}}";
+                    $('#fprice').empty();
+                    $.each(res, function(key, value) {
+                        $('#fprice').append('<div class="col-lg-4 col-md-6 col-sm-12 pb-1" >\
                                 <div class="card product-item border-0 mb-4">\
                                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">\
                                         <img class="img-fluid w-100" src="' + img + '/' + value['image'] + '" alt="">\
@@ -317,22 +343,32 @@
                                     </div>\
                                     <div class="card-footer d-flex justify-content-between bg-light border">\
                                         <a href="product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
-                                        <a href="/enquire-now/'+value['id']+'" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
+                                        <a href="/enquire-now/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
                                     </div>\
                                 </div>\
                             </div>');
-                        });
-                    }
-                });
-                var pages = parseInt(page);
-                $('.nextp').text(pages + 1);
-                $('.prevp').text(pages - 1);
+                    });
+                }
+            });
+            var pages = parseInt(page);
+            $('.nextp').text(pages + 1);
+            $('.prevp').text(pages - 1);
         });
         // custom pagination function end
 
         // search bar function start
 
         $('#searchbar').keyup(function() {
+
+            // for reset other filters start
+            $('#price_filter option[value="0"]').prop('selected', true);
+            $('.allbrand').text('All Brands');
+            $('#year_all').prop('checked', true);
+            $('#year_1').prop('checked', false);
+            $('#year_2').prop('checked', false);
+            $('#year_3').prop('checked', false);
+            // for reset other filters end
+
             var search = $(this).val().trim().toLowerCase();
             $.ajax({
                 type: "GET",
@@ -361,7 +397,7 @@
                                     </div>\
                                     <div class="card-footer d-flex justify-content-between bg-light border">\
                                         <a href="product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
-                                        <a href="/enquire-now/'+value['id']+'" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
+                                        <a href="/enquire-now/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
                                     </div>\
                                 </div>\
                             </div>');
@@ -373,9 +409,10 @@
 
         // brand filter function with dropdown start 
 
-        $(document).on('click', '.brand', function(){
+        $(document).on('click', '.brand', function() {
 
             // for reset other filters start
+            $("#searchbar").val('');
             $('#price_filter option[value="0"]').prop('selected', true);
             $('#year_all').prop('checked', true);
             $('#year_1').prop('checked', false);
@@ -411,7 +448,7 @@
                                     </div>\
                                     <div class="card-footer d-flex justify-content-between bg-light border">\
                                         <a href="product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
-                                        <a href="/enquire-now/'+value['id']+'" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
+                                        <a href="/enquire-now/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
                                     </div>\
                                 </div>\
                             </div>');
@@ -419,7 +456,7 @@
                 }
             });
         });
+        // brand filter function with dropdown end
     });
-    // brand filter function with dropdown end
 </script>
 @endsection

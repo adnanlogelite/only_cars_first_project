@@ -4,7 +4,7 @@
 <div class="col-lg-12">
     <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-        <div class="carousel-item active" style="height: 410px;">
+            <div class="carousel-item active" style="height: 410px;">
                 <img class="img-fluid" src="{{url('user/img/banner2.jpg')}}" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 700px;">
@@ -56,36 +56,16 @@
     <div class="row px-xl-5">
         <div class="col">
             <div class="owl-carousel vendor-carousel">
-                <div class="vendor-item border p-4">
-                    <img src="{{url('user/img/honda-logo.png')}}" height="110px" alt="">
-                </div>
-                <div class="vendor-item border p-4">
-                    <img src="{{url('user/img/Suzuki-logo.jpg')}}" height="110px" alt="">
-                </div>
-                <div class="vendor-item border p-4">
-                    <img src="{{url('user/img/toyota-logo.png')}}" height="110px" alt="">
-                </div>
-                <div class="vendor-item border p-4">
-                    <img src="{{url('user/img/jeep-logo.png')}}" height="110px" alt="">
-                </div>
-                <div class="vendor-item border p-4">
-                    <img src="{{url('user/img/bmw-logo.png')}}" height="110px" alt="">
-                </div>
-                <div class="vendor-item border p-4">
-                    <img src="{{url('user/img/Kia-logo.jpg')}}" height="110px" alt="">
-                </div>
-                <div class="vendor-item border p-4">
-                    <img src="{{url('user/img/Hyundai-logo.jpg')}}" height="110px" alt="">
-                </div>
-                <div class="vendor-item border p-4">
-                    <img src="{{url('user/img/ford-logo.png')}}" height="110px" alt="">
-                </div>
-                <div class="vendor-item border p-4">
-                    <img src="{{url('user/img/audi-logo.png')}}" height="110px" alt="">
-                </div>
-                <div class="vendor-item border p-4">
-                    <img src="{{url('user/img/mercedes-logo.png')}}" height="110px" alt="">
-                </div>
+                <div class="vendor-item border p-4 carz"><a href="/shop/Honda"><img src="{{url('user/img/honda-logo.png')}}" height="110px" alt=""></a></div>
+                <div class="vendor-item border p-4 carz"><a href="/shop/Suzuki"><img src="{{url('user/img/Suzuki-logo.jpg')}}" height="110px" alt=""></a></div>
+                <div class="vendor-item border p-4 carz"><a href="/shop/Toyota"><img src="{{url('user/img/toyota-logo.png')}}" height="110px" alt=""></a></div>
+                <div class="vendor-item border p-4 carz"><a href="/shop/jeep"><img src="{{url('user/img/jeep-logo.png')}}" height="110px" alt=""></a></div>
+                <div class="vendor-item border p-4 carz"><a href="/shop/BMW"><img src="{{url('user/img/bmw-logo.png')}}" height="110px" alt=""></a></div>
+                <div class="vendor-item border p-4 carz"><a href="/shop/Kia"><img src="{{url('user/img/Kia-logo.jpg')}}" height="110px" alt=""></a></div>
+                <div class="vendor-item border p-4 carz"><a href="/shop/Hyundai"><img src="{{url('user/img/Hyundai-logo.jpg')}}" height="110px" alt=""></a></div>
+                <div class="vendor-item border p-4 carz"><a href="/shop/Ford"><img src="{{url('user/img/ford-logo.png')}}" height="110px" alt=""></a></div>
+                <div class="vendor-item border p-4 carz"><a href="/shop/Audi"><img src="{{url('user/img/audi-logo.png')}}" height="110px" alt=""></a></div>
+                <div class="vendor-item border p-4 carz"><a href="/shop/Mercedes"><img src="{{url('user/img/mercedes-logo.png')}}" height="110px" alt=""></a></div>
             </div>
         </div>
     </div>
@@ -294,7 +274,12 @@
     </div>
 </div>
 <!-- Products End -->
-
-
-
+<!-- <script>
+    $(document).ready(function() {
+        $(document).on('click', '.carz', function() {
+            var val = $(this).text();
+            localStorage.setItem('test', val);
+        });
+    });
+</script> -->
 @endsection

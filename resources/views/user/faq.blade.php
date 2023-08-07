@@ -29,7 +29,7 @@
 </style>
 @section('page_header')
 <div class="col-lg-12">
-    <div class="container-fluid bg-image mb-5" style="background-image: url('images/allcar.png');">
+    <div class="container-fluid bg-image mb-5" style="background-image: url('images/banner.png');">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">FAQs</h1>
             <div class="d-inline-flex">

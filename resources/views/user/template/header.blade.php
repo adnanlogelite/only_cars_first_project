@@ -5,7 +5,7 @@
 <meta content="Free HTML Templates" name="description">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <!-- Favicon -->
-<link href="{{url('user/img/favicon.ico')}}" rel="icon">
+<link href="{{url('user/img/only.png')}}" rel="icon">
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="{{url('https://fonts.gstatic.com')}}">

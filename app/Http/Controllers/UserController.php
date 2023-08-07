@@ -39,7 +39,12 @@ class UserController extends Controller
         $count = count($total);
         // dd($count);
         $total_page = ceil($count / $limit);
-        return view('user.shop', compact('total_page', 'records'));
+        if(!empty($request->brands)){
+            $brands = Listing::where('brand_name', $request->brands)->get();
+            return view('user.shop', compact('total_page', 'records', 'brands'));
+        }else{
+            return view('user.shop', compact('total_page', 'records'));
+        }
     }
     public function product(Request $request)
     {

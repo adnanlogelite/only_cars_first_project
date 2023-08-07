@@ -60,7 +60,7 @@ Route::middleware(['checkdashboard'])->group(function () {
 });
 Route::get('/admin-logout', [adminController::class, 'logout']);
 
-// User Panel Routes 
+// FrontEnd Routes 
 
 Route::middleware(['ulogin'])->group(function () {
     Route::get('/my-enquiry', [UserController::class, 'shopping_cart']);
@@ -71,7 +71,7 @@ Route::middleware(['hassesion'])->group(function () {
     Route::any('/login', [UserController::class, 'login']);
 });
 Route::get('/home', [UserController::class, 'home']);
-Route::get('/shop', [UserController::class, 'shop']);
+Route::get('/shop/{brands?}', [UserController::class, 'shop']);
 Route::get('/product-detail/{id}', [UserController::class, 'product']);
 Route::any('/contact', [UserController::class, 'contact']);
 Route::get('/verify-token/{token}', [UserController::class, 'verify']);

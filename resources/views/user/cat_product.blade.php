@@ -2,7 +2,7 @@
 @section('title', 'Category')
 @section('page_header')
 <div class="col-lg-12">
-    <div class="container-fluid bg-image mb-5" style="background-image: url('http://127.0.0.1:8000/images/allcar.png');">
+    <div class="container-fluid bg-image mb-5" style="background-image: url('http://127.0.0.1:8000/images/banner.png');">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             @if(request()->id == 1)
             <h1 class="font-weight-semi-bold text-uppercase mb-3">New Cars</h1>
