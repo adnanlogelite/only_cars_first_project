@@ -53,7 +53,7 @@
             <div class="faq">
                 <div class="container">
                     @foreach($faq as $faqs)
-                        <button class="accordion mb-3 accordion-button collapsed" data-bs-toggle="collapse"><b>Q{{$sno++}}:</b> {{$faqs->title}}</button>
+                        <button class="accordion mb-3 accordion-button collapsed" data-bs-toggle="collapse">{{$faqs->title}}</button>
                         <div class="panel">
                             {!! html_entity_decode($faqs->content) !!}
                         </div>
