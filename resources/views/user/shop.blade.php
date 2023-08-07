@@ -15,6 +15,7 @@
 </div>
 @endsection
 @section('content')
+@php($slug = request()->route()->parameters)
 <!-- Shop Start -->
 <div class="container-fluid">
     <div class="row px-xl-5">
@@ -82,7 +83,7 @@
                             </div>
                         </div>
                         <div class="dropdown ml-4">
-                            <button class="btn border dropdown-toggle allbrand" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Brands</button>
+                            <button class="btn border dropdown-toggle allbrand" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@if(!empty($brands)) {{$slug['brands']}} @else All Brands @endif</button>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
                                 @foreach($records as $data)
                                 <span class="dropdown-item brand">{{$data->brand_name}}</span>
@@ -108,7 +109,7 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="product-detail/{{$brand->id}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="/product-detail/{{$brand->id}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                                 <a href="/enquire-now/{{$brand->id}}" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>
                             </div>
                         </div>
@@ -146,7 +147,7 @@
     $(document).ready(function() {
         var pathname = $(location).attr('pathname');
         // $('.allbrand').text(name);
-        if(pathname == '/shop'){
+        if (pathname == '/shop') {
             get_data();
         }
         $('.prev').hide();
@@ -172,7 +173,7 @@
                                     </div>\
                                 </div>\
                                 <div class="card-footer d-flex justify-content-between bg-light border">\
-                                    <a href="product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
+                                    <a href="/product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
                                     <a href="/enquire-now/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
                                 </div>\
                             </div>\
@@ -222,7 +223,7 @@
                                     </div>\
                                 </div>\
                                 <div class="card-footer d-flex justify-content-between bg-light border">\
-                                    <a href="product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
+                                    <a href="/product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
                                     <a href="/enquire-now/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
                                 </div>\
                             </div>\
@@ -286,7 +287,7 @@
                                     </div>\
                                 </div>\
                                 <div class="card-footer d-flex justify-content-between bg-light border">\
-                                    <a href="product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
+                                    <a href="/product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
                                     <a href="/enquire-now/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
                                 </div>\
                             </div>\
@@ -342,7 +343,7 @@
                                         </div>\
                                     </div>\
                                     <div class="card-footer d-flex justify-content-between bg-light border">\
-                                        <a href="product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
+                                        <a href="/product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
                                         <a href="/enquire-now/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
                                     </div>\
                                 </div>\
@@ -396,7 +397,7 @@
                                         </div>\
                                     </div>\
                                     <div class="card-footer d-flex justify-content-between bg-light border">\
-                                        <a href="product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
+                                        <a href="/product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
                                         <a href="/enquire-now/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
                                     </div>\
                                 </div>\
@@ -447,7 +448,7 @@
                                         </div>\
                                     </div>\
                                     <div class="card-footer d-flex justify-content-between bg-light border">\
-                                        <a href="product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
+                                        <a href="/product-detail/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>\
                                         <a href="/enquire-now/' + value['id'] + '" class="btn btn-sm text-dark p-0"><i class="fa fa-envelope text-primary mr-1"></i>Enquire Now</a>\
                                     </div>\
                                 </div>\

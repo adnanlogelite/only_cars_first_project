@@ -60,7 +60,7 @@
                 <p class="text-dark font-weight-medium mb-0 mr-3">City:</p>
                 <p>{{$product->city}}</p>
             </div>
-            <div class="d-flex align-items-center mb-4 pt-2">
+            <div class="d-flex align-items-center pt-2">
                 <!-- <div class="input-group quantity mr-3" style="width: 130px;">
                     <div class="input-group-btn">
                         <button class="btn btn-primary btn-minus">
@@ -76,7 +76,7 @@
                 </div> -->
                 <a href="/enquire-now/{{$product->id}}"><button class="btn btn-primary px-3"><i class="fa fa-envelope mr-1"></i> Enquire Now</button></a>
             </div>
-            <div class="d-flex pt-2">
+            <!-- <div class="d-flex pt-2">
                 <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
                 <div class="d-inline-flex">
                     <a class="text-dark px-2" href="">
@@ -92,7 +92,7 @@
                         <i class="fab fa-pinterest"></i>
                     </a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="row px-xl-5">
