@@ -60,6 +60,12 @@ class UserController extends Controller
     {
         $ses = Session::get('userlogin');
         if ($request->all()) {
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'subject' => 'required',
+                'massage' => 'required',
+            ]);
             $contact = new ContactForm;
             $contact->name = $request->name;
             $contact->email = $request->email;
