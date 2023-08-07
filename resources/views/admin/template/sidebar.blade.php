@@ -29,6 +29,7 @@
             <li><a href="/update-banner"><i class="fa fa-picture-o" style='color:#ec6f6f'></i> <span>Banner</span></a></li>
             <li><a href="/admin-faq"><i class="fa fa-question-circle" style='color:#95f9a9'></i> <span>FAQs</span></a></li>
             <li><a href="/admin-privacy"><i class="fa fa-shield" style='color:#b0bab2'></i> <span>Privacy Policy</span></a></li>
+            <li><a href="/contact-queries"><i class="fa fa-envelope" style='color:#f3b8ff'></i> <span>Contact Queries</span></a></li>
             <li class="active">
                 <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-magic orange_color"></i> <span>Customize</span></a>
                 <ul class="collapse list-unstyled" id="dashboard">

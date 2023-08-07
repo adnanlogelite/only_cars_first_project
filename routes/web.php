@@ -49,6 +49,8 @@ Route::middleware(['checklogin'])->group(function () {
     Route::post('/add-address', [adminController::class, 'add_address']);
     Route::get('/social-icon', [adminController::class, 'social']);
     Route::post('/upload-social-media', [adminController::class, 'social_media']);
+    Route::get('/contact-queries', [adminController::class, 'contact_queries']);
+    Route::get('/read-query/{id?}', [adminController::class, 'read_query']);
 });
 Route::middleware(['checkdashboard'])->group(function () {
     Route::get('/admin-register', [adminController::class, 'admin_register']);

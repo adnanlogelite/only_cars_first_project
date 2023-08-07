@@ -8,6 +8,7 @@ use App\Models\Admin;
 use App\Models\category;
 use App\Models\Listing;
 use App\Models\Banner;
+use App\Models\ContactForm;
 use App\Models\Enquiry;
 use App\Models\Faq;
 use App\Models\Policy;
@@ -491,5 +492,13 @@ class adminController extends Controller
             'pinterest' => $request->pinterest
         ]);
         return array('code' => 100, 'msg' => 'Social Links Updated!');
+    }
+    public function contact_queries(){
+        $contact = ContactForm::get();
+        return view('admin.contact_queries', compact('contact'));
+    }
+    public function read_query(Request $request){
+        $contact = ContactForm::where('id', $request->id)->first();
+        return view('admin.read_query', compact('contact'));
     }
 }
