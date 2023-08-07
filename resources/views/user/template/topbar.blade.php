@@ -2,6 +2,11 @@
      .high.is_active {
          color: black;
      }
+
+     .dropdown-menu {
+         max-height: 273px;
+         overflow-y: auto;
+     }
  </style>
  <div class="container-fluid">
      <div class="row bg-secondary py-2 px-xl-5">
