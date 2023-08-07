@@ -1,7 +1,7 @@
  <style>
-         .high.is_active {
-             color: black;
-         }
+     .high.is_active {
+         color: black;
+     }
  </style>
  <div class="container-fluid">
      <div class="row bg-secondary py-2 px-xl-5">
@@ -88,7 +88,7 @@
                  <span class="badge">0</span>
              </a> -->
              <a href="/my-enquiry" class="btn border">
-             <i class="fa fa-envelope text-primary"></i>
+                 <i class="fa fa-envelope text-primary"></i>
                  <span class="badge enquiry">0</span>
              </a>
          </div>
@@ -109,46 +109,46 @@
              type: "GET",
              url: "{{url('social')}}",
              success: function(respond) {
-                    if(respond['facebook']){
-                        $('#social').append('<a class="text-dark px-2" href="'+respond['facebook']+'">\
+                 if (respond['facebook']) {
+                     $('#social').append('<a class="text-dark px-2" href="' + respond['facebook'] + '">\
                         <i class="fab fa-facebook-f"></i>\
                     </a>');
-                    }
-                    if(respond['twitter']){
-                        $('#social').append('<a class="text-dark px-2" href="'+respond['twitter']+'">\
+                 }
+                 if (respond['twitter']) {
+                     $('#social').append('<a class="text-dark px-2" href="' + respond['twitter'] + '">\
                         <i class="fab fa-twitter"></i>\
                     </a>');
-                    }
-                    if(respond['linkedin']){
-                        $('#social').append('<a class="text-dark px-2" href="'+respond['linkedin']+'">\
+                 }
+                 if (respond['linkedin']) {
+                     $('#social').append('<a class="text-dark px-2" href="' + respond['linkedin'] + '">\
                         <i class="fab fa-linkedin-in"></i>\
                     </a>');
-                    }
-                    if(respond['instagram']){
-                        $('#social').append('<a class="text-dark px-2" href="'+respond['instagram']+'">\
+                 }
+                 if (respond['instagram']) {
+                     $('#social').append('<a class="text-dark px-2" href="' + respond['instagram'] + '">\
                         <i class="fab fa-instagram"></i>\
                     </a>');
-                    }
-                    if(respond['youtube']){
-                        $('#social').append('<a class="text-dark px-2" href="'+respond['youtube']+'">\
+                 }
+                 if (respond['youtube']) {
+                     $('#social').append('<a class="text-dark px-2" href="' + respond['youtube'] + '">\
                         <i class="fab fa-youtube"></i>\
                     </a>');
-                    }
-                    if(respond['reddit']){
-                        $('#social').append('<a class="text-dark px-2" href="'+respond['reddit']+'">\
+                 }
+                 if (respond['reddit']) {
+                     $('#social').append('<a class="text-dark px-2" href="' + respond['reddit'] + '">\
                         <i class="fab fa-reddit-alien"></i>\
                     </a>');
-                    }
-                    if(respond['telegram']){
-                        $('#social').append('<a class="text-dark px-2" href="'+respond['telegram']+'">\
+                 }
+                 if (respond['telegram']) {
+                     $('#social').append('<a class="text-dark px-2" href="' + respond['telegram'] + '">\
                         <i class="fab fa-telegram"></i>\
                     </a>');
-                    }
-                    if(respond['pinterest']){
-                        $('#social').append('<a class="text-dark px-2" href="'+respond['pinterest']+'">\
+                 }
+                 if (respond['pinterest']) {
+                     $('#social').append('<a class="text-dark px-2" href="' + respond['pinterest'] + '">\
                         <i class="fab fa-pinterest"></i>\
                     </a>');
-                    }
+                 }
              }
          });
          $(document).on('keyup', '.ser', function() {
@@ -164,7 +164,7 @@
                      var data = '';
                      console.log(typeof keyword);
                      $.each(res, function(key, value) {
-                         data += '<a href="/product-detail/'+value['id']+'" class="text-decoration-none ahigh"><li class="list-group-item d-flex justify-content-between align-items-center high">\
+                         data += '<a href="/product-detail/' + value['id'] + '" class="text-decoration-none ahigh"><li class="list-group-item d-flex justify-content-between align-items-center high">\
                          ' + value['car_name'] + '\
                          <span class="badge badge-primary badge-pill">' + value['brand_name'] + '</span>\
                      </li></a>'
@@ -172,21 +172,20 @@
                      $('.search_list').html(data);
                  }
              });
-             
          });
-         $(document).on('mouseenter','.high',function(){
-            $('.ahigh').removeClass('text-decoration-none');
-            $(this).addClass('is_active');
+         $(document).on('mouseenter', '.high', function() {
+             $('.ahigh').removeClass('text-decoration-none');
+             $(this).addClass('is_active');
          })
-         $(document).on('mouseleave','.high',function(){
-            $(this).removeClass('is_active');
+         $(document).on('mouseleave', '.high', function() {
+             $(this).removeClass('is_active');
          })
          $.ajax({
-            type: "GET",
-            url: "{{url('top')}}",
-            success: function(res){
-                $('.enquiry').text(res);
-            }
+             type: "GET",
+             url: "{{url('top')}}",
+             success: function(res) {
+                 $('.enquiry').text(res);
+             }
          });
      });
  </script>
